@@ -1,0 +1,447 @@
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif; /* Use a trendy font from Google Fonts */
+  margin: 0;
+  padding: 0;
+  background-color: #FBF5DD;  /* Soft light cream background */
+  color: #333;
+}
+
+/* Header Styles */
+header {
+  background-color: #16404D; /* Deep teal color */
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between; /* Aligning the links properly */
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  border-bottom: 5px solid #DDA853; /* Golden color for separation */
+}
+
+/* Navigation Menu */
+header nav {
+  display: flex;
+  justify-content: flex-start; /* Aligning to the left */
+  gap: 30px;
+  font-size: 1.1em;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 400;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+/* Hover effects on navigation links */
+header nav a:hover {
+  background-color: whitesmoke; /* Soft amber color on hover */
+  color: #16404D; /* Dark teal text color when hovered */
+  transform: scale(1.1); /* Slight scaling effect for emphasis */
+}
+
+.img-logo{
+  border-radius: 12px;
+}
+/* Main content */
+main {
+  padding: 30px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-out;
+}
+
+/* Form Section */
+form {
+  background-color: #A6CDC6;
+  padding: 30px;
+  padding-left:150px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.8s ease-out;
+}
+
+form label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #16404D; /* Deep teal */
+}
+
+input{
+  align-items: center;
+  width: 40%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+select, button {
+  width: 30%;
+  padding: 12px;
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+button {
+  background-color: #16404D;
+  width: 30%;
+  border-radius: 12px;
+  margin-left: 30px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #297d96; /* Soft amber on hover */
+}
+
+.search-section {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.header_image{
+  border-radius: 50%;
+}
+
+.search-section .name {
+  flex: 1;
+  margin-left: 250px;
+}
+
+
+.search-section .inputs {
+  margin-left: 200px;
+  flex: 2;
+}
+
+/* Recipe Response Section */
+#responses-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+  height: 1200px;
+}
+
+#generated-recipes-container {
+  flex: 2.5;
+  background-color: #e8f5e9; /* Light green background for Edamam response */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap; /* Ensure the cards wrap when needed */
+  justify-content: space-between;
+  gap: 20px;
+}
+
+#gemini-response {
+  flex: 1.5;
+  background-color: #e8f5e9; /* Light blue background for Gemini AI */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  height: auto;
+}
+
+#trust-ai-button {
+  margin-bottom: 20px;
+  margin-left: 105px;
+  padding: 12px 20px;
+  background-color: #A6CDC6;
+  color: #16404D;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bolder;
+  width: 60%;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+#trust-ai-button:hover {
+  background-color: #37a1c1;
+}
+
+/* Recipe Card Layout */
+.recipe-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 25%;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px); /* Subtle lift effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+}
+
+.recipe-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card-actions {
+  margin-top: 10px;
+}
+
+.card-actions button {
+  padding: 8px 12px;
+  margin: 5px;
+  background-color: #A6CDC6;
+  color: #16404D;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card-actions button:hover {
+  background-color:#208dae; 
+}
+
+/* Footer */
+
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  header nav a {
+    margin: 0 10px;
+  }
+
+  .recipe-card {
+    width: 100%; /* Make cards full width on smaller screens */
+  }
+
+  #responses-container {
+    flex-direction: column; /* Stack the responses vertically on smaller screens */
+  }
+
+  #generated-recipes-container, #gemini-response {
+    flex: 1; /* Make both sections take equal space on small screens */
+  }
+
+  #trust-ai-button {
+    width: 100%; /* Full width button on mobile */
+  }
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+  header {
+    padding: 20px 15px;
+  }
+
+  header nav {
+    flex-direction: column; /* Stack navigation items on mobile */
+    align-items: center;
+    gap: 10px;
+  }
+
+  header nav a {
+    font-size: 1.1em;
+    padding: 8px 12px;
+  }
+}
+@media (max-width: 768px) {
+  .form-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .form-input,
+  .form-button {
+    width: 100%;
+  }
+} 
+
+.form-button {
+  display: inline-block;
+  background-color: #16404D;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none; /* Remove underline from link */
+  text-align: center;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #297d96; /* Soft amber on hover */
+}
+
+
+/* General Styles for About Us Page */
+.about-us {
+  padding: 30px;
+  margin: 0 auto;
+  max-width: 1200px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-us h1, .about-us h2 {
+  color: #16404D; /* Deep teal */
+  margin-bottom: 20px;
+}
+
+.about-us p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #333;
+}
+
+.about-us ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.about-us ul li {
+  font-size: 1.1em;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.about-us ul li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: #DDA853; /* Golden amber for checkmarks */
+}
+
+/* Team Section */
+.team {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.team-member {
+  text-align: center;
+  width: 30%;
+}
+
+.team-member img {
+  width: 70%;
+  height: auto;
+  gap: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.team-member h3 {
+  color: #16404D;
+  font-size: 1.5em;
+}
+
+.team-member p {
+  font-weight: 400; 
+  font-size: larger;/* Light muted teal */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #16404D; /* Deep teal for footer */
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo img {
+  width: 150px;
+  height: auto;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #FFC107; /* Golden amber on hover */
+}
+
+.footer-social a {
+  margin: 0 10px;
+}
+
+.footer-social img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.footer-social img:hover {
+  transform: scale(1.2); /* Slight zoom effect */
+}
+
+footer p {
+  margin-top: 20px;
+  font-size: 1em;
+  color: white;
+}
+

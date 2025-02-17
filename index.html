@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cook Ease</title>
+  <link rel="icon" class="header_image" href="assets\fav.webp" type="image/jpg">
+  <!-- Google Font Link for Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img class="img-logo" href="./index.html" src="assets\logo-1.png" alt="logo" height="70px" width="250px">
+    </div>
+    <nav>
+      <a href="./index.html" class="home-link">Home</a>
+      <a href="./signup.html">Sign Up</a>
+      <a href="./saved.html">Saved Recipes</a>
+      <a href="./about.html">About Us</a>
+      <a id="auth-link" href="./login.html">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Main Content -->
+    <div class="search-section">
+      <div class="name">
+        <img class="header_image" width="350px" height="350px" src="assets\bg-img.jpg">
+      </div>
+      <div class="inputs">
+        <form id="recipe-form">
+          <label for="ingredients">Enter Ingredients:</label>
+          <input type="text" id="ingredients" name="ingredients" placeholder="e.g., chicken, egg, bread">
+          <label for="time">Time (minutes):</label>
+          <input type="number" id="time" name="time" placeholder="e.g., 30">
+          <button type="submit">Search Recipes</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="responses-container">
+      <div id="generated-recipes-container">
+        <!-- Placeholder for catchy text before showing recipes -->
+        <p class="placeholder-text"><h3>"Cooking made easy - enter ingredients and let the magic happen!"</h3></p>
+      </div>
+      <div id="gemini-response">
+        <!-- Gemini AI response content will be dynamically added here -->
+        <button id="trust-ai-button">Generate Recipe from AI</button>
+        <div id="gemini-response-container">
+          <!-- Gemini AI response will be displayed here -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/logo-1.png" alt="CookEase Logo" height="50px" width="150px">
+      </div>
+      <div class="footer-links">
+        <a href="./about.html">About Us</a>
+        <a href="./terms.html">Terms of Service</a>
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="mailto:contact@cookease.com">Contact Us</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://facebook.com" target="_blank">
+          <img src="assets\facebook-logo.jpeg" alt="Facebook" height="30px" width="30px">
+        </a>
+        <a href="https://twitter.com" target="_blank">
+          <img src="assets\twitter-logo.png" alt="Twitter" height="30px" width="30px">
+        </a>
+        <a href="https://instagram.com" target="_blank">
+          <img src="assets\insta-logo.jpeg" alt="Instagram" height="30px" width="30px">
+        </a>
+      </div>
+    </div>
+    <p>&copy; 2025 CookEase. All rights reserved.</p>
+  </footer>
+  
+
+  <script type="module" src="./js/main.js"></script>
+  <script src="./js/auth.js"></script>
+</body>
+
+</html>
