@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const generatedRecipesContainer = document.getElementById('generated-recipes-container');
   const geminiResponseContainer = document.getElementById('gemini-response-container');
   const trustAIButton = document.getElementById('trust-ai-button');
-  const savedRecipesLink = document.getElementById('saved-recipes-link');
+  const savedRecipesContainer = document.getElementById('saved-recipes-container');
 
   updateAuthLink();
 
@@ -34,8 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
           allRecipes.forEach(recipe => {
             const card = createRecipeCard(recipe);
             generatedRecipesContainer.appendChild(card);
-
-            localStorage.setItem('savedRecipes', JSON.stringify(allRecipes));
           });
         }
       } catch (error) {
@@ -70,13 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const savedRecipesContainer = document.getElementById('saved-recipes-container');
   if (savedRecipesContainer) {
     if (!isLoggedIn()) {
       alert('Please log in to view your saved recipes.');
       window.location.href = 'login.html';
     } else {
-      loadSavedRecipes(savedRecipesContainer);
+      loadLikedRecipes(savedRecipesContainer);
     }
   }
 });
@@ -96,7 +93,7 @@ function createRecipeCard(recipe) {
 
   if (recipe.image) {
     const img = document.createElement('img');
-    img.src = recipe.image; 
+    img.src = recipe.image;
     card.appendChild(img);
   }
 
@@ -104,7 +101,6 @@ function createRecipeCard(recipe) {
 
   const actions = document.createElement('div');
   actions.className = 'card-actions';
-
 
   const likeBtn = document.createElement('button');
   likeBtn.className = 'like-btn';
@@ -114,7 +110,6 @@ function createRecipeCard(recipe) {
     toggleLikeRecipe(recipe, likeBtn);
   });
   actions.appendChild(likeBtn);
-
 
   const youtubeBtn = document.createElement('button');
   youtubeBtn.textContent = 'Video';
@@ -144,38 +139,47 @@ function isLoggedIn() {
   return !!localStorage.getItem('loggedInUser');
 }
 
-
 function isRecipeLiked(recipe) {
-  const likedRecipes = JSON.parse(localStorage.getItem('likedRecipes')) || [];
+  const username = localStorage.getItem('loggedInUser');
+  const likedKey = `likedRecipes_${username}`;
+  const likedRecipes = JSON.parse(localStorage.getItem(likedKey)) || [];
+
   return likedRecipes.some(r => r.title === recipe.title);
 }
 
 function toggleLikeRecipe(recipe, btn) {
-  const likedRecipes = JSON.parse(localStorage.getItem('likedRecipes')) || [];
+  if (!isLoggedIn()) {
+    alert('Please log in to like recipes.');
+    return;
+  }
+
+  const username = localStorage.getItem('loggedInUser');
+  const likedKey = `likedRecipes_${username}`;
+  let likedRecipes = JSON.parse(localStorage.getItem(likedKey)) || [];
   const index = likedRecipes.findIndex(r => r.title === recipe.title);
 
-  if (isLoggedIn()) {
-    if (index > -1) {
-      likedRecipes.splice(index, 1); 
-      btn.textContent = 'Like';
-    } else {
-      likedRecipes.push(recipe); 
-      btn.textContent = 'Liked';
-    }
-    localStorage.setItem('likedRecipes', JSON.stringify(likedRecipes));
+  if (index > -1) {
+    likedRecipes.splice(index, 1);
+    btn.textContent = 'Like';
   } else {
-    alert('Please log in to save recipes.');
+    likedRecipes.push(recipe);
+    btn.textContent = 'Liked';
   }
+
+  localStorage.setItem(likedKey, JSON.stringify(likedRecipes));
 }
 
-function loadSavedRecipes(container) {
-  const likedRecipes = JSON.parse(localStorage.getItem('likedRecipes')) || [];
+function loadLikedRecipes(container) {
+  const username = localStorage.getItem('loggedInUser');
+  const likedKey = `likedRecipes_${username}`;
 
-  if (likedRecipes.length === 0) {
+  let userLikedRecipes = JSON.parse(localStorage.getItem(likedKey)) || [];
+
+  if (userLikedRecipes.length === 0) {
     container.innerHTML = '<p>No saved recipes. Like some recipes on the Home page!</p>';
   } else {
     container.innerHTML = '';
-    likedRecipes.forEach(recipe => {
+    userLikedRecipes.forEach(recipe => {
       const card = createRecipeCard(recipe);
       container.appendChild(card);
     });
@@ -184,7 +188,7 @@ function loadSavedRecipes(container) {
 
 function updateAuthLink() {
   const authLink = document.getElementById('auth-link');
-  
+
   if (authLink) {
     if (isLoggedIn()) {
       authLink.textContent = 'Logout';
@@ -207,7 +211,7 @@ function simulateTypingEffect(text) {
   const steps = text.split('\n');
   let stepIndex = 0;
 
-  typingBox.innerHTML = ''; 
+  typingBox.innerHTML = '';
   let typingInterval = setInterval(() => {
     if (stepIndex < steps.length) {
       typingBox.innerHTML += `<p>${steps[stepIndex]}</p>`;
@@ -215,5 +219,5 @@ function simulateTypingEffect(text) {
     } else {
       clearInterval(typingInterval);
     }
-  }, 1000); 
+  }, 1000);
 }
