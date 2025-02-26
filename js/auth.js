@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const authLink = document.getElementById('auth-link');
   const signupError = document.getElementById('signup-error');
   const loginError = document.getElementById('login-error');
-  const successMessage = document.getElementById('success-message'); // For successful signup/login
+  const successMessage = document.getElementById('success-message'); 
 
-  // Handle Sign Up
+
   if (signupForm) {
     signupForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Handle Login
+
   if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -48,9 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (storedUser) {
           const userObj = JSON.parse(storedUser);
           if (userObj.password === password) {
-            localStorage.setItem('loggedInUser', username); // Set logged-in user
+            localStorage.setItem('loggedInUser', username); 
             loginError.textContent = "";
-            window.location.href = 'index.html'; // Redirect to home after login success
+            window.location.href = 'index.html';
           } else {
             loginError.textContent = "Incorrect password!";
             loginError.style.color = 'red';
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateAuthLink();
 
-  // Logout functionality
+
   if (authLink) {
     if (isLoggedIn()) {
       authLink.textContent = 'Logout';
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         localStorage.removeItem('loggedInUser');
         updateAuthLink();
-        window.location.href = 'index.html'; // Redirect to home after logout
+        window.location.href = 'index.html'; 
       });
     } else {
       authLink.textContent = 'Login';
@@ -83,12 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Check if the user is logged in by checking localStorage
+
 function isLoggedIn() {
   return !!localStorage.getItem('loggedInUser');
 }
 
-// Update the auth link text (Login/Logout) based on login state
+
 function updateAuthLink() {
   const authLink = document.getElementById('auth-link');
   const signupLink = document.querySelector('nav a[href="./signup.html"]');
@@ -97,11 +97,11 @@ function updateAuthLink() {
     if (isLoggedIn()) {
       authLink.textContent = 'Logout';
       authLink.href = '#';
-      signupLink.style.display = 'none'; // Hide the signup link when logged in
+      signupLink.style.display = 'none'; 
     } else {
       authLink.textContent = 'Login';
       authLink.href = 'login.html';
-      signupLink.style.display = 'inline'; // Show the signup link when not logged in
+      signupLink.style.display = 'inline'; 
     }
   }
 }

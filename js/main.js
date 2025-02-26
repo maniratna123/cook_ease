@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateAuthLink();
 
-  // For the recipe form submission
   if (recipeForm) {
     recipeForm.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -21,13 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
       let geminiRecipes = [];
 
       try {
-        // Fetch from both Edamam and Gemini
         [edamamRecipes, geminiRecipes] = await Promise.all([
           fetchRecipesFromEdamam(query),
           fetchRecipesFromGemini(query, time, 'non-dish')
         ]);
 
-        const allRecipes = [...(edamamRecipes || []), ...(geminiRecipes || [])];
+        const allRecipes = [...(edamamRecipes || [])];
 
         if (allRecipes.length === 0) {
           generatedRecipesContainer.innerHTML = '<p>No recipes found. Try a different query.</p>';
@@ -37,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = createRecipeCard(recipe);
             generatedRecipesContainer.appendChild(card);
 
-            // Save recipes to localStorage
             localStorage.setItem('savedRecipes', JSON.stringify(allRecipes));
           });
         }
@@ -48,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // When the "Trust AI to Generate Recipe" button is clicked
   if (trustAIButton) {
     trustAIButton.addEventListener('click', async () => {
       const query = document.getElementById('ingredients').value;
@@ -87,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- Helper functions ---
 
-// Create recipe card dynamically
 function createRecipeCard(recipe) {
   const card = document.createElement('div');
   card.className = 'recipe-card';
@@ -101,7 +96,7 @@ function createRecipeCard(recipe) {
 
   if (recipe.image) {
     const img = document.createElement('img');
-    img.src = recipe.image; // Edamam image URL
+    img.src = recipe.image; 
     card.appendChild(img);
   }
 
@@ -110,7 +105,7 @@ function createRecipeCard(recipe) {
   const actions = document.createElement('div');
   actions.className = 'card-actions';
 
-  // Like Button
+
   const likeBtn = document.createElement('button');
   likeBtn.className = 'like-btn';
   likeBtn.textContent = isRecipeLiked(recipe) ? 'Liked' : 'Like';
@@ -120,7 +115,7 @@ function createRecipeCard(recipe) {
   });
   actions.appendChild(likeBtn);
 
-  // Video Button: Opens YouTube search for the recipe
+
   const youtubeBtn = document.createElement('button');
   youtubeBtn.textContent = 'Video';
   youtubeBtn.addEventListener('click', (e) => {
@@ -132,7 +127,6 @@ function createRecipeCard(recipe) {
 
   card.appendChild(actions);
 
-  // Clicking the card opens the full recipe in a new page.
   card.addEventListener('click', () => {
     if (isLoggedIn()) {
       localStorage.setItem('selectedRecipe', JSON.stringify(recipe));
@@ -146,37 +140,34 @@ function createRecipeCard(recipe) {
   return card;
 }
 
-// Function to check if user is logged in
 function isLoggedIn() {
   return !!localStorage.getItem('loggedInUser');
 }
 
-// Function to check if a recipe is liked
+
 function isRecipeLiked(recipe) {
   const likedRecipes = JSON.parse(localStorage.getItem('likedRecipes')) || [];
   return likedRecipes.some(r => r.title === recipe.title);
 }
 
-// Function to toggle like/unlike a recipe
 function toggleLikeRecipe(recipe, btn) {
   const likedRecipes = JSON.parse(localStorage.getItem('likedRecipes')) || [];
   const index = likedRecipes.findIndex(r => r.title === recipe.title);
 
   if (isLoggedIn()) {
     if (index > -1) {
-      likedRecipes.splice(index, 1); // Remove the recipe from liked list
+      likedRecipes.splice(index, 1); 
       btn.textContent = 'Like';
     } else {
-      likedRecipes.push(recipe); // Add the recipe to liked list
+      likedRecipes.push(recipe); 
       btn.textContent = 'Liked';
     }
-    localStorage.setItem('likedRecipes', JSON.stringify(likedRecipes)); // Save to localStorage
+    localStorage.setItem('likedRecipes', JSON.stringify(likedRecipes));
   } else {
     alert('Please log in to save recipes.');
   }
 }
 
-// Load saved recipes (liked recipes)
 function loadSavedRecipes(container) {
   const likedRecipes = JSON.parse(localStorage.getItem('likedRecipes')) || [];
 
@@ -191,7 +182,6 @@ function loadSavedRecipes(container) {
   }
 }
 
-// Update the auth link based on login state
 function updateAuthLink() {
   const authLink = document.getElementById('auth-link');
   
@@ -217,7 +207,7 @@ function simulateTypingEffect(text) {
   const steps = text.split('\n');
   let stepIndex = 0;
 
-  typingBox.innerHTML = ''; // Clear initial content
+  typingBox.innerHTML = ''; 
   let typingInterval = setInterval(() => {
     if (stepIndex < steps.length) {
       typingBox.innerHTML += `<p>${steps[stepIndex]}</p>`;
@@ -225,5 +215,5 @@ function simulateTypingEffect(text) {
     } else {
       clearInterval(typingInterval);
     }
-  }, 1000); // Adjust typing speed here
+  }, 1000); 
 }

@@ -1,29 +1,26 @@
-/* General Styles */
 body {
-  font-family: 'Roboto', sans-serif; /* Use a trendy font from Google Fonts */
+  font-family: 'Roboto', sans-serif; 
   margin: 0;
   padding: 0;
-  background-color: #FBF5DD;  /* Soft light cream background */
+  background-color: #FBF5DD;  
   color: #333;
 }
 
-/* Header Styles */
 header {
-  background-color: #16404D; /* Deep teal color */
+  background-color: #16404D; 
   color: white;
   padding: 10px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-between; /* Aligning the links properly */
+  justify-content: space-between; 
   align-items: center;
   font-family: 'Roboto', sans-serif;
-  border-bottom: 5px solid #DDA853; /* Golden color for separation */
+  border-bottom: 5px solid #DDA853; 
 }
 
-/* Navigation Menu */
 header nav {
   display: flex;
-  justify-content: flex-start; /* Aligning to the left */
+  justify-content: flex-start; 
   gap: 30px;
   font-size: 1.1em;
 }
@@ -37,17 +34,16 @@ header nav a {
   border-radius: 10px;
 }
 
-/* Hover effects on navigation links */
 header nav a:hover {
-  background-color: whitesmoke; /* Soft amber color on hover */
-  color: #16404D; /* Dark teal text color when hovered */
-  transform: scale(1.1); /* Slight scaling effect for emphasis */
+  background-color: whitesmoke;
+  color: #16404D; 
+  transform: scale(1.1); 
 }
 
 .img-logo{
   border-radius: 12px;
 }
-/* Main content */
+
 main {
   padding: 30px;
   margin: 0 auto;
@@ -57,7 +53,6 @@ main {
   animation: fadeIn 1s ease-out;
 }
 
-/* Form Section */
 form {
   background-color: #A6CDC6;
   padding: 30px;
@@ -72,7 +67,7 @@ form {
 form label {
   margin-bottom: 10px;
   font-weight: bold;
-  color: #16404D; /* Deep teal */
+  color: #16404D; 
 }
 
 input{
@@ -105,7 +100,7 @@ button {
 }
 
 button:hover {
-  background-color: #297d96; /* Soft amber on hover */
+  background-color: #297d96; 
 }
 
 .search-section {
@@ -129,7 +124,7 @@ button:hover {
   flex: 2;
 }
 
-/* Recipe Response Section */
+
 #responses-container {
   display: flex;
   justify-content: space-between;
@@ -140,21 +135,21 @@ button:hover {
 
 #generated-recipes-container {
   flex: 2.5;
-  background-color: #e8f5e9; /* Light green background for Edamam response */
+  background-color: #e8f5e9; 
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   height: auto;
   display: flex;
-  flex-wrap: wrap; /* Ensure the cards wrap when needed */
+  flex-wrap: wrap; 
   justify-content: space-between;
   gap: 20px;
 }
 
 #gemini-response {
   flex: 1.5;
-  background-color: #e8f5e9; /* Light blue background for Gemini AI */
+  background-color: #e8f5e9; 
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -181,7 +176,6 @@ button:hover {
   background-color: #37a1c1;
 }
 
-/* Recipe Card Layout */
 .recipe-card {
   background-color: white;
   padding: 20px;
@@ -194,8 +188,8 @@ button:hover {
 }
 
 .recipe-card:hover {
-  transform: translateY(-5px); /* Subtle lift effect */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .recipe-card img {
@@ -222,10 +216,7 @@ button:hover {
   background-color:#208dae; 
 }
 
-/* Footer */
 
-
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -244,37 +235,36 @@ button:hover {
   }
 }
 
-/* Responsive Layout */
 @media (max-width: 768px) {
   header nav a {
     margin: 0 10px;
   }
 
   .recipe-card {
-    width: 100%; /* Make cards full width on smaller screens */
+    width: 100%; 
   }
 
   #responses-container {
-    flex-direction: column; /* Stack the responses vertically on smaller screens */
+    flex-direction: column; 
   }
 
   #generated-recipes-container, #gemini-response {
-    flex: 1; /* Make both sections take equal space on small screens */
+    flex: 1; 
   }
 
   #trust-ai-button {
-    width: 100%; /* Full width button on mobile */
+    width: 100%; 
   }
 }
 
-/* Responsive Header */
+
 @media (max-width: 768px) {
   header {
     padding: 20px 15px;
   }
 
   header nav {
-    flex-direction: column; /* Stack navigation items on mobile */
+    flex-direction: column; 
     align-items: center;
     gap: 10px;
   }
@@ -302,7 +292,7 @@ button:hover {
   color: white;
   padding: 12px 20px;
   border-radius: 8px;
-  text-decoration: none; /* Remove underline from link */
+  text-decoration: none; 
   text-align: center;
   cursor: pointer;
   font-size: 1em;
@@ -310,11 +300,10 @@ button:hover {
 }
 
 .form-button:hover {
-  background-color: #297d96; /* Soft amber on hover */
+  background-color: #297d96;
 }
 
 
-/* General Styles for About Us Page */
 .about-us {
   padding: 30px;
   margin: 0 auto;
@@ -325,7 +314,7 @@ button:hover {
 }
 
 .about-us h1, .about-us h2 {
-  color: #16404D; /* Deep teal */
+  color: #16404D;
   margin-bottom: 20px;
 }
 
@@ -351,10 +340,10 @@ button:hover {
   content: '✔';
   position: absolute;
   left: 0;
-  color: #DDA853; /* Golden amber for checkmarks */
+  color: #DDA853; 
 }
 
-/* Team Section */
+
 .team {
   display: flex;
   gap: 20px;
@@ -381,12 +370,12 @@ button:hover {
 
 .team-member p {
   font-weight: 400; 
-  font-size: larger;/* Light muted teal */
+  font-size: larger;
 }
 
-/* Footer Styles */
+
 footer {
-  background-color: #16404D; /* Deep teal for footer */
+  background-color: #16404D; 
   color: white;
   text-align: center;
   padding: 30px 20px;
@@ -421,7 +410,7 @@ footer {
 }
 
 .footer-links a:hover {
-  color: #FFC107; /* Golden amber on hover */
+  color: #FFC107; 
 }
 
 .footer-social a {
@@ -436,7 +425,7 @@ footer {
 }
 
 .footer-social img:hover {
-  transform: scale(1.2); /* Slight zoom effect */
+  transform: scale(1.2); 
 }
 
 footer p {

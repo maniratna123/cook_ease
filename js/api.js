@@ -1,4 +1,4 @@
-/* js/api.js */
+
 
 // --------------------------
 // EDAMAM API Integration
@@ -58,7 +58,7 @@ export async function fetchRecipesFromGemini(query, time, type) {
       return [];
     } else {
       // Fix missing quotes and string interpolation issue in Gemini API prompt
-      combinedInput = `Generate 1 simple breakfast recipe using the following ingredients: ${query}. Provide a title, list of ingredients, and step-by-step instructions. Do not include any images.`;
+      combinedInput = `Generate 1 simple recipe using the following ingredients: ${query}. Provide a title, list of ingredients, and step-by-step instructions. Do not include any images.`;
       if (time) {
         combinedInput += ` The recipe should take about ${time} minutes to prepare.`;
       }
